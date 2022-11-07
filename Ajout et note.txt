@@ -1,0 +1,4 @@
+Constructeur biblioteque de plus avec un paramêtre pour le nombre de Membre maximum
+Méthode pour créer une grande, moyene et petite bibli
+ajouter membre dans bibli vas retourner un bool pour savoir si il a bien été ajouté
+nbMembresActuellement est une variable de biblioteque qui permet de savoir où placer les nouveaux membres
