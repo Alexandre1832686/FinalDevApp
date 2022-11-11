@@ -56,7 +56,11 @@ namespace FinalDevApp
 
         public void SetEmprunteur(Membre value)
         {
-            emprunteur = value;
+            bool verif = value.AjouterDocument(this);
+            if(verif)
+            {
+                emprunteur = value;
+            }
         }
 
         public Membre[] GetListeAttente()
@@ -94,16 +98,20 @@ namespace FinalDevApp
 
         public bool EnleverMembreListeAttente(Membre retrait)
         {
-            if(retrait.GetNom() == listeAttente[0].GetNom())
+            if(retrait.GetNom() == emprunteur.GetNom())
             {
-                listeAttente[0] = null;
+                emprunteur = listeAttente[0];
+                listeAttente[0] = listeAttente[1];
+                listeAttente[1] = null;
+                return true;
+            }
+            else if(retrait.GetNom() == listeAttente[0].GetNom())
+            {
                 if (listeAttente[1] != null)
                 {
                     listeAttente[0] = listeAttente[1];
                     listeAttente[1] = null;
                 }
-
-
                 return true;
             }
             else if (retrait.GetNom() == listeAttente[1].GetNom())

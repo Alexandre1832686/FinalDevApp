@@ -13,6 +13,7 @@ namespace FinalDevApp
         int nbPages;
         string isbn;
         string cote;
+        string description;
 
         public string GetDescription()
         {
@@ -21,12 +22,41 @@ namespace FinalDevApp
 
         public override string Description()
         {
-            return "Titre : " + base.GetTitre() + "\t Auteur : " + base.GetAuteur();
+            return description;
         }
 
         public int GetNbPages()
         {
             return nbPages;
+        }
+
+        public DateTime GetDatePublication()
+        {
+            return datePublication;
+        }
+
+        public string GetEditeur()
+        {
+            return editeur;
+        }
+
+        public string GetISBN()
+        {
+            return isbn;
+        }
+
+        public string GetCote()
+        {
+            return cote;
+        }
+
+        public Livre(string editeur_p, DateTime datePublication_p, int nbPages_p, string isbn_p, string cote_p, string titre_p, string auteur_p) :base(titre_p, auteur_p)
+        {
+            this.editeur = editeur_p;
+            this.datePublication = datePublication_p;
+            this.nbPages = nbPages_p;
+            this.isbn = isbn_p;
+            this.cote = cote_p;
         }
     }
 }

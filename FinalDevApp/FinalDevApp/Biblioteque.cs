@@ -67,9 +67,32 @@ namespace FinalDevApp
 
         //retourne true si le livre est disponible et lui attribue.
         //si le livre n'est pas dispo, retourne false et met le membre en liste d'attente.
+
+        //********************************//Je sais que si la liste d'attente est pleine il ne sera pas ajouter et la fonction ne donnera pas plus d'information.
         public bool NotifierEmprunt(string nomMembre, Document leDocument)
         {
+            Membre leMembre = TrouverMembre(nomMembre);
 
+            //le Membre existe
+            if (leMembre != null)
+            {
+                //dispo
+                if (leDocument.estDisponible())
+                {
+                    leDocument.SetEmprunteur(leMembre);
+                    return true;
+                }
+                else
+                {
+                    leDocument.AjouterMembreListeAttente(leMembre);
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
         public bool NotifierRetour(Document leDocument)
@@ -112,9 +135,16 @@ namespace FinalDevApp
             }
         }
 
+        /// <summary>
+        /// appelle la fonction du document : ajouterMembreListeAttente avec en paramètre le membre recu.
+        /// </summary>
+        /// <param name="leMembre"></param>
+        /// <param name="leDoc"></param>
+        /// <returns></returns>
         public bool AjouterListeAttente(Membre leMembre, Document leDoc)
         {
-
+            bool verif = leDoc.AjouterMembreListeAttente(leMembre);
+            return verif;
         }
     }
 }

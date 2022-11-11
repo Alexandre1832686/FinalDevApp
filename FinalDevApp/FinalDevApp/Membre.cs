@@ -9,7 +9,7 @@ namespace FinalDevApp
     public class Membre
     {
         string nom;
-        Document[] listeEmprunts;
+        List<Document> listeEmprunts;
         int noMembre;
         static int nbMembresTotal;
 
@@ -17,5 +17,57 @@ namespace FinalDevApp
         {
             return nom;
         }
+        public Membre(string nom_p)
+        {
+            this.nom = nom_p;
+            this.listeEmprunts = new List<Document>();
+            this.noMembre = nbMembresTotal +1;
+        }
+
+        public void SetNom(string newNom)
+        {
+            nom = newNom;
+        }
+
+        public List<Document> GetListeEmprunt()
+        {
+            return listeEmprunts;
+        }
+
+        public int GetNombreEmprunt()
+        {
+            return listeEmprunts.Count;
+        }
+        
+        public int GetNoMembre()
+        {
+           return noMembre;
+        }
+
+        public bool AjouterDocument(Document nouveau)
+        {
+            if(GetNombreEmprunt()<4)
+            {
+                if(nouveau.GetEmprunteur() !=null)
+                {
+                    return false;
+                }
+                
+                listeEmprunts.Add(nouveau);
+                nouveau.SetEmprunteur(this);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool RetirerDocument(Document retrait)
+        {
+            return listeEmprunts.Remove(retrait);
+        }
+
+
     }
 }
