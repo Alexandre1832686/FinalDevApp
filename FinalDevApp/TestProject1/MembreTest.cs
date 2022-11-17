@@ -7,7 +7,7 @@ namespace TestProject1
     public class MembreTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void NoMembre()
         {
             Membre membre1 = new Membre("a");
             Membre membre2 = new Membre("b");
@@ -21,7 +21,7 @@ namespace TestProject1
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void MaxEmprunt()
         {
             Membre membre1 = new Membre("a");
             Document doc = new Livre("paul's editor inc", new System.DateTime(), 4, "bien", "45165166", "Le livre de paul", "paul");

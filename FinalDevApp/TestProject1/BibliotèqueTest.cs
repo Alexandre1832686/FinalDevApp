@@ -7,7 +7,7 @@ namespace TestProject1
     public class BibliotèqueTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void LongueureArrayDifferantesBibli()
         {
             Biblioteque normal = new Biblioteque("normal");
             Biblioteque perso = new Biblioteque("perso", 15);
@@ -43,17 +43,24 @@ namespace TestProject1
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void RetourEtEmprunt()
         {
             Membre monMembre = new Membre("alex");
             Membre monMembre2 = new Membre("alex2");
             Document doc = new Livre("paul's editor inc", new System.DateTime(), 4,"bien","45165166","Le livre de paul", "paul");
             Biblioteque bibli = new Biblioteque("labibli");
+
+
             if(!bibli.AjouterMembre(monMembre))
             {
                 Assert.Fail();
             }
             if (!bibli.AjouterMembre(monMembre2))
+            {
+                Assert.Fail();
+            }
+
+            if (bibli.NotifierRetour(doc))
             {
                 Assert.Fail();
             }
@@ -87,7 +94,7 @@ namespace TestProject1
         }
 
         [TestMethod]
-        public void TestMethod3()
+        public void AjoutTropMembre()
         {
             Biblioteque bib = new Biblioteque("bibli");
 

@@ -7,7 +7,7 @@ namespace TestProject1
     public class DocumentTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void CompareLivre()
         {
             Document doc = new Livre("paul's editor inc", new System.DateTime(), 4, "bien", "45165166", "Le livre de paul", "paul");
             Document doc2 = new Livre("paul's editor inc", new System.DateTime(), 4, "bien", "45165166", "Le livre de paul", "paul");
@@ -26,7 +26,7 @@ namespace TestProject1
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void ListeAttente()
         {
             Document doc = new Livre("paul's editor inc", new System.DateTime(), 4, "bien", "45165166", "Le livre de paul", "paul");
             Membre membre = new Membre("alex");
