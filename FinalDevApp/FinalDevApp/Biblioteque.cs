@@ -97,7 +97,29 @@ namespace FinalDevApp
 
         public bool NotifierRetour(Document leDocument)
         {
+            if(leDocument.GetEmprunteur() == null)
+            {
+                return false;
+            }
 
+            Membre leMembre = leDocument.GetEmprunteur();
+
+            if(!leMembre.RetirerDocument(leDocument))
+            {
+                return false;
+            }
+
+            if (leDocument.GetListeAttente()[0] != null)
+            {
+                leDocument.SetEmprunteur(leDocument.GetListeAttente()[0]);
+                leDocument.EnleverMembreListeAttente(leDocument.GetListeAttente()[0]);
+            }
+            else
+            {
+                leDocument.SetEmprunteur(null);
+            }
+
+            return true;
         }
 
         //vas chercher un membre dans son tableau de membres par son nom. renvoie null si ne trouve pas. renvoie le membre si trouve

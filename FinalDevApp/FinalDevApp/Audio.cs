@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalDevApp
 {
-    internal class Audio : Document, IDescription
+    public class Audio : Document, IDescription
     {
         string description;
         int nbMinutes;
