@@ -9,7 +9,11 @@ namespace TestProject1
         [TestMethod]
         public void Constructeur()
         {
-            Audio audio = new Audio("", -1000, "", "","");
+            Audio audio = new Audio("", -1000, "", "","moi");
+            if(audio.GetAuteur() != "moi")
+            {
+                Assert.Fail();
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalDevApp
 {
-    internal class Periodique : Document, IDescription, IImprime
+    public class Periodique : Document, IDescription, IImprime
     {
         int numero;
         int nbPages;

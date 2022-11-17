@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalDevApp
 {
-    internal class Biblioteque
+    public class Biblioteque
     {
         //variables
         Repertoire leRepertoire;
@@ -46,17 +46,17 @@ namespace FinalDevApp
 
 
             //FONCTION AJOUTÉ - permet de créer une bibliotèque avec 500 membres 
-            public Biblioteque CréerGrandeBiblioteque(string nom)
+            static public Biblioteque CréerGrandeBiblioteque(string nom)
             {
                 return new Biblioteque(nom, 500);
             }
             //FONCTION AJOUTÉ - permet de créer une bibliotèque avec 100 membres
-            public Biblioteque CréerMoyenneBiblioteque(string nom)
+            static public Biblioteque CréerMoyenneBiblioteque(string nom)
             {
                 return new Biblioteque(nom, 100);
             }
             //FONCTION AJOUTÉ - permet de créer une bibliotèque avec 10 membres
-            public Biblioteque CréerPetiteBiblioteque(string nom)
+            static public Biblioteque CréerPetiteBiblioteque(string nom)
             {
                 return new Biblioteque(nom, 10);
             }
@@ -92,7 +92,6 @@ namespace FinalDevApp
             {
                 return false;
             }
-            
         }
 
         public bool NotifierRetour(Document leDocument)
@@ -102,22 +101,7 @@ namespace FinalDevApp
                 return false;
             }
 
-            Membre leMembre = leDocument.GetEmprunteur();
-
-            if(!leMembre.RetirerDocument(leDocument))
-            {
-                return false;
-            }
-
-            if (leDocument.GetListeAttente()[0] != null)
-            {
-                leDocument.SetEmprunteur(leDocument.GetListeAttente()[0]);
-                leDocument.EnleverMembreListeAttente(leDocument.GetListeAttente()[0]);
-            }
-            else
-            {
-                leDocument.SetEmprunteur(null);
-            }
+            leDocument.EnleverMembreListeAttente(leDocument.GetEmprunteur());
 
             return true;
         }
@@ -137,7 +121,6 @@ namespace FinalDevApp
             }
             
             return null;
-            
         }
 
         //FONCTION MODIFIER -

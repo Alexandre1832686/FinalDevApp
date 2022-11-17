@@ -80,7 +80,12 @@ namespace FinalDevApp
 
         public bool AjouterMembreListeAttente(Membre ajout)
         {
-            if (listeAttente[0] == null)
+            if(emprunteur == null)
+            {
+                emprunteur = ajout;
+                return true;
+            }
+            else if (listeAttente[0] == null)
             {
                 listeAttente[0] = ajout;
                 return true;
@@ -107,11 +112,9 @@ namespace FinalDevApp
             }
             else if(retrait.GetNom() == listeAttente[0].GetNom())
             {
-                if (listeAttente[1] != null)
-                {
-                    listeAttente[0] = listeAttente[1];
-                    listeAttente[1] = null;
-                }
+                listeAttente[0] = listeAttente[1];
+                listeAttente[1] = null;
+                
                 return true;
             }
             else if (retrait.GetNom() == listeAttente[1].GetNom())

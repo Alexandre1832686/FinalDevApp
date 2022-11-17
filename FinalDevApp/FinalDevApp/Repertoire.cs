@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalDevApp
 {
-    internal class Repertoire
+    public class Repertoire
     {
         List<Document> listeDocuments;
         string nom;
@@ -34,7 +34,6 @@ namespace FinalDevApp
             }
 
             return listeRetour;
-
         }
 
         public List<Document> GetListeEmprunts()
@@ -58,14 +57,14 @@ namespace FinalDevApp
             this.nom = nomRepertoire;
         }
 
+        //*********************** À FAIRE  **************//
         public List<Document> ChargerDocuments(string nomFichier)
         {
-
+            return new List<Document>();
         }
 
         public Document TrouverDocument(string titre, string auteur)
         {
-            
             foreach(Document d in listeDocuments)
             {
                 if(d.GetAuteur() == auteur && d.GetTitre() == titre)
@@ -73,7 +72,6 @@ namespace FinalDevApp
                     return d;
                 }
             }
-            
             return null;
         }
 

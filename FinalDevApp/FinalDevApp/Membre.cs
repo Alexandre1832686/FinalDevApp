@@ -17,11 +17,12 @@ namespace FinalDevApp
         {
             return nom;
         }
+
         public Membre(string nom_p)
         {
             this.nom = nom_p;
             this.listeEmprunts = new List<Document>();
-            this.noMembre = nbMembresTotal +1;
+            this.noMembre = ++nbMembresTotal;
         }
 
         public void SetNom(string newNom)
@@ -48,13 +49,7 @@ namespace FinalDevApp
         {
             if(GetNombreEmprunt()<4)
             {
-                if(nouveau.GetEmprunteur() !=null)
-                {
-                    return false;
-                }
-                
                 listeEmprunts.Add(nouveau);
-                nouveau.SetEmprunteur(this);
                 return true;
             }
             else

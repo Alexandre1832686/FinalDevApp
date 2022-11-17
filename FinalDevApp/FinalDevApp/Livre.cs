@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalDevApp
 {
-    internal class Livre : Document, IDescription, IImprime
+    public class Livre : Document, IDescription, IImprime
     {
         string editeur;
         DateTime datePublication;
