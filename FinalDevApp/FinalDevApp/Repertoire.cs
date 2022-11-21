@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,37 +20,17 @@ namespace FinalDevApp
 
         public string GetNom()
         {
-           return nom;  
+           return nom;
         }
 
         public List<Document> GetListAttente()
         {
-            List<Document> listeRetour = new List<Document>();
-
-            foreach (Document d in listeDocuments)
-            {
-                if (d.GetListeAttente()[0] != null)
-                {
-                   listeRetour.Add(d);
-                }
-            }
-
-            return listeRetour;
+            throw new NotImplementedException();
         }
 
         public List<Document> GetListeEmprunts()
         {
-            List<Document> listeRetour = new List<Document>();
-
-            foreach (Document d in listeDocuments)
-            {
-                if (d.GetEmprunteur() != null)
-                {
-                    listeRetour.Add(d);
-                }
-            }
-
-            return listeRetour;
+            throw new NotImplementedException();
         }
 
         public Repertoire(List<Document> listeDocuments, string nomRepertoire)
@@ -57,39 +39,62 @@ namespace FinalDevApp
             this.nom = nomRepertoire;
         }
 
-        //*********************** À FAIRE  **************//
-        public List<Document> ChargerDocuments(string nomFichier)
+        public static List<Document> ChargerDocuments(string nomFichier)
         {
-            return new List<Document>();
+            FileStream f = new FileStream(nomFichier, FileMode.OpenOrCreate);
+            StreamReader s = new StreamReader(f);
+
+            List<Document> documents = new List<Document>();
+            
+            string line;
+
+            while ((line = s.ReadLine()) != null)
+            {
+                string[] data = line.Split(',');
+                switch(data[0])
+                {
+                    case "Livre":
+                        Document monLivre = new Livre(data[1], DateTime.Parse(data[2]), Int32.Parse(data[3]), data[4], data[5], data[6], data[7]);
+                        documents.Add(monLivre);
+                        break;
+                    case "Audio":
+                        Document monAudio = new Audio(data[1], Int32.Parse(data[2]), data[3], data[4], data[5]);
+                        documents.Add(monAudio);
+                        break;
+                    case "Periodique":
+                        Document monPeriodique = new Periodique(Int32.Parse(data[1]), Int32.Parse(data[2]), Int32.Parse(data[3]), data[4], data[5], data[6]);
+                        documents.Add(monPeriodique);
+                        break;
+                    default:
+                        throw new Exception("premier mot n'est pas un type");
+                        
+                }
+            }
+            
+
+            s.Close();
+            f.Close();
+            return documents;
         }
 
         public Document TrouverDocument(string titre, string auteur)
         {
-            foreach(Document d in listeDocuments)
-            {
-                if(d.GetAuteur() == auteur && d.GetTitre() == titre)
-                {
-                    return d;
-                }
-            }
-            return null;
+            throw new NotImplementedException();
         }
 
         public bool AjouterDocument(Document nouveauDoc)
         {
-            listeDocuments.Add(nouveauDoc);
-            return true;
+            throw new NotImplementedException();
         }
 
         public bool suprimerDocument(Document docASuprimer)
         {
-            listeDocuments.Remove(docASuprimer);
-            return true;
+            throw new NotImplementedException();
         }
 
         public bool VerifierDisponibilite(Document docAVerifier)
         {
-            return docAVerifier.estDisponible();
+            throw new NotImplementedException();
         }
     }
 }
