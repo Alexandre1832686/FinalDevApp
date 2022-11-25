@@ -54,7 +54,7 @@ namespace FinalDevApp
                 switch(data[0])
                 {
                     case "Livre":
-                        Document monLivre = new Livre(data[1], DateTime.Parse(data[2]), Int32.Parse(data[3]), data[4], data[5], data[6], data[7]);
+                        Document monLivre = new Livre(data[1], new DateTime(int.Parse(data[2]), int.Parse(data[3]), int.Parse(data[4])), int.Parse(data[5]), data[6], data[7], data[8], data[9]);
                         documents.Add(monLivre);
                         break;
                     case "Audio":

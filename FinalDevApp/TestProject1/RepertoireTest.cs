@@ -13,18 +13,18 @@ namespace TestProject1
         public void TestMethod1()
         {
             string path = "BD.txt";
-
+            
             if (!File.Exists(path))
             {
                 Assert.Fail();
             }
 
             List<Document> list = new List<Document>();
-            
             list = Repertoire.ChargerDocuments(path);
-            
 
-            if(list[0].GetTitre() != "Geronimo")
+
+
+            if (list[0].GetTitre() != "Geronimo")
             {
                 Assert.Fail();
             }
