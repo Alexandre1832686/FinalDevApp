@@ -86,7 +86,7 @@ namespace FinalDevApp
                         documents.Add(monPeriodique);
                         break;
                     default:
-                        throw new Exception("premier mot n'est pas un type");
+                        throw new EnregistrementDocumentErrorException();
                         
                 }
             }
@@ -107,7 +107,7 @@ namespace FinalDevApp
                 }
             }
 
-            return null;
+            throw new DocumentNotFoundException(titre, this.nom);
         }
 
         public bool AjouterDocument(Document nouveauDoc)

@@ -67,7 +67,5 @@ namespace FinalDevApp
         {
             return listeEmprunts.Remove(retrait);
         }
-
-
     }
 }
