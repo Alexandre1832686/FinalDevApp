@@ -61,7 +61,7 @@ namespace FinalDevApp
 
         public static List<Document> ChargerDocuments(string nomFichier)
         {
-            FileStream f = new FileStream(nomFichier, FileMode.OpenOrCreate);
+            FileStream f = new FileStream("../../../../" + nomFichier, FileMode.OpenOrCreate);
             StreamReader s = new StreamReader(f);
 
             List<Document> documents = new List<Document>();
