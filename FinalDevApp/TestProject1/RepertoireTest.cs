@@ -12,8 +12,8 @@ namespace TestProject1
         [TestMethod]
         public void TestMethod1()
         {
-            string path = "BD.txt";
-
+            string fileName = "BD.txt";
+            string path = "../../../../" + fileName;
             
 
             if (!File.Exists(path))
@@ -23,7 +23,7 @@ namespace TestProject1
 
 
             List<Document> list = new List<Document>();
-            list = Repertoire.ChargerDocuments(path);
+            list = Repertoire.ChargerDocuments(fileName);
 
 
             if (list[0].GetTitre() != "Geronimo")
