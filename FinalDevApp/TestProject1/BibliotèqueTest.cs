@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FinalDevApp;
+using System.Security;
 
 namespace TestProject1
 {
@@ -113,6 +114,49 @@ namespace TestProject1
             {
                 Assert.Fail();
             }
+        }
+
+        [TestMethod]
+        public void trouverMembreException()
+        {
+            Biblioteque bib = new Biblioteque("bibli cool");
+            Membre sujet = null;
+
+            for (int i = 0; i < 10; i++)
+            {
+                Membre monMembre = new Membre("alex" + i);
+
+                if(i==2)
+                {
+                    sujet = monMembre;
+                }
+
+                if (!bib.AjouterMembre(monMembre))
+                {
+                    Assert.Fail();
+                }
+            }
+
+            if(bib.TrouverMembre(sujet.GetNom()) != sujet)
+            {
+                Assert.Fail();
+            }
+
+            
+            Membre sujet2 = new Membre("bwipo");
+
+
+
+            try
+            {
+                bib.TrouverMembre(sujet2.GetNom());
+            }
+            catch(MembreNotFoundException e)
+            {
+                return;
+            }
+
+            Assert.Fail();
         }
     }
 }

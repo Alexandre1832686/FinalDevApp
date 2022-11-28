@@ -25,12 +25,32 @@ namespace FinalDevApp
 
         public List<Document> GetListAttente()
         {
-            throw new NotImplementedException();
+            List<Document> list = new List<Document>();
+
+            foreach (Document d in listeDocuments)
+            {
+                if(d.GetListeAttente() != null)
+                {
+                    list.Add(d);
+                }
+            }
+
+            return list;
         }
 
         public List<Document> GetListeEmprunts()
         {
-            throw new NotImplementedException();
+            List<Document> list = new List<Document>();
+
+            foreach (Document d in listeDocuments)
+            {
+                if (d.GetEmprunteur() != null)
+                {
+                    list.Add(d);
+                }
+            }
+
+            return list;
         }
 
         public Repertoire(List<Document> listeDocuments, string nomRepertoire)
@@ -79,22 +99,47 @@ namespace FinalDevApp
 
         public Document TrouverDocument(string titre, string auteur)
         {
-            throw new NotImplementedException();
+            foreach (Document d in listeDocuments)
+            {
+                if (d.GetTitre() == titre && d.GetAuteur() == auteur)
+                {
+                    return d;
+                }
+            }
+
+            return null;
         }
 
         public bool AjouterDocument(Document nouveauDoc)
         {
-            throw new NotImplementedException();
+            if(nouveauDoc != null && !listeDocuments.Contains(nouveauDoc))
+            {
+                listeDocuments.Add(nouveauDoc);
+                return true;
+            }
+            
+            return false;
         }
 
         public bool suprimerDocument(Document docASuprimer)
         {
-            throw new NotImplementedException();
+            if (docASuprimer != null && listeDocuments.Contains(docASuprimer))
+            {
+                listeDocuments.Remove(docASuprimer);
+                return true;
+            }
+            
+            return false;
         }
 
         public bool VerifierDisponibilite(Document docAVerifier)
         {
-            throw new NotImplementedException();
+            if (docAVerifier.GetEmprunteur() != null)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -47,7 +47,12 @@ namespace FinalDevApp
 
         public bool AjouterDocument(Document nouveau)
         {
-            if(GetNombreEmprunt()<4)
+            if(nouveau == null)
+            {
+                return false;
+            }
+
+            if(GetNombreEmprunt()<3)
             {
                 listeEmprunts.Add(nouveau);
                 return true;
