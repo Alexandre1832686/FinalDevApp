@@ -87,11 +87,8 @@ namespace FinalDevApp
                         break;
                     default:
                         throw new EnregistrementDocumentErrorException();
-                        
                 }
             }
-            
-
             s.Close();
             f.Close();
             return documents;
@@ -117,7 +114,6 @@ namespace FinalDevApp
                 listeDocuments.Add(nouveauDoc);
                 return true;
             }
-            
             return false;
         }
 
