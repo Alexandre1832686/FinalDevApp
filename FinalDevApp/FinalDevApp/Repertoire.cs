@@ -86,6 +86,8 @@ namespace FinalDevApp
                         documents.Add(monPeriodique);
                         break;
                     default:
+                        s.Close();
+                        f.Close();
                         throw new EnregistrementDocumentErrorException();
                 }
             }
